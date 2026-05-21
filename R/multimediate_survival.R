@@ -95,8 +95,8 @@ multimediate_survival=function(lmodel.m, correlated = FALSE, model.y, treat, tre
 
   PredictM1<-PredictM0<-PredictM1b<-PredictM0b<- array(0, dim=c(J,N,NM))
 
-  if (verbose) print("Simulation of counterfactuals mediators")
-  if (verbose) pb <- txtProgressBar(min = 0, max = NM, style = 3,title ="Simulation of counterfactuals mediators")
+  if (isTRUE(verbose)) message("Simulation of counterfactuals mediators")
+  if (isTRUE(verbose)) pb <- txtProgressBar(min = 0, max = NM, style = 3,title ="Simulation of counterfactuals mediators")
   for (nm in 1:NM){
     pred.data.t <- pred.data.c <- model.frame(lmodel.m[[nm]])
 
@@ -152,9 +152,9 @@ multimediate_survival=function(lmodel.m, correlated = FALSE, model.y, treat, tre
         PredictM0[,,nm]=(PredictM0[,,nm]>0)*1
       }
     }
-    if (verbose) setTxtProgressBar(pb, nm)
+    if (isTRUE(verbose)) setTxtProgressBar(pb, nm)
   }
-  if (verbose) close(pb)
+  if (isTRUE(verbose)) close(pb)
 
   effect.tmp.NM=OR.NM=array(NA, dim = c(N, J, 2, NM))
   effect.tmp=OR=array(NA, dim = c(N, J, 4))
@@ -167,8 +167,8 @@ multimediate_survival=function(lmodel.m, correlated = FALSE, model.y, treat, tre
       Pr0.NM<-Pr1.NM <-ORPr0.NM<-ORPr1.NM <- array(NA,dim=c(N,J,NM))
     }
 
-    if (verbose) print(title[e])
-    if (verbose) pb <- txtProgressBar(min = 0, max = J, style = 3,title=title[e])
+    if (isTRUE(verbose)) message(title[e])
+    if (isTRUE(verbose)) pb <- txtProgressBar(min = 0, max = J, style = 3,title=title[e])
 
     for (j in 1:J) {
       if(inherits(model.y, "aalen")){
@@ -486,9 +486,9 @@ multimediate_survival=function(lmodel.m, correlated = FALSE, model.y, treat, tre
           }
         }
       }
-      if (verbose) setTxtProgressBar(pb, j,title=title[e])
+      if (isTRUE(verbose)) setTxtProgressBar(pb, j,title=title[e])
     }
-    if (verbose) close(pb)
+    if (isTRUE(verbose)) close(pb)
 
     if (!is.null(model.y$family)){
 
@@ -529,7 +529,7 @@ multimediate_survival=function(lmodel.m, correlated = FALSE, model.y, treat, tre
       }
     }
   }
-  if (verbose) print("Computing average point estimates together with p-values and confidence intervals")
+  if (isTRUE(verbose)) message("Computing average point estimates together with p-values and confidence intervals")
 
 
   et1 <- effect.tmp[, , 1] # joint mediated effect delta(1)

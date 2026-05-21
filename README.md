@@ -16,7 +16,7 @@ library(devtools)
 install_github("samarafk/multimediate") 
 ```
 
-Or you can install the released version from [CRAN](https://cran.r-project.org) with:
+Or you can install the released version of `multimediate` from CRAN with:
 
 ```r
 install.packages("multimediate")
@@ -24,4 +24,4 @@ install.packages("multimediate")
 
 ## Examples
 
-Vignettes and examples of usage can be found at https://samarafk.github.io/multimediate/.
+Vignettes and examples of usage can be found in https://samarafk.github.io/multimediate/.

@@ -20,11 +20,11 @@ multimediate(
 )
 }
 \arguments{
-\item{lmodel.m}{list of fitted models object for mediators. Can be of class 'lm', 'polr','glm'.}
+\item{lmodel.m}{list of fitted models object for mediators. Can be of class \code{lm}, \code{polr}, \code{glm}.}
 
-\item{correlated}{a logical value. if 'FALSE' a identity matrix is used for the matrix of correlation of mediators; if 'TRUE' matrix of correlation is estimated. Default is 'FALSE'.}
+\item{correlated}{a logical value. if \code{FALSE} a identity matrix is used for the matrix of correlation of mediators; if \code{TRUE} matrix of correlation is estimated. Default is 'FALSE'.}
 
-\item{model.y}{a fitted model object for the outcome. Can be of class 'lm', 'polr','glm' or 'aalen'.}
+\item{model.y}{a fitted model object for the outcome. Can be of class \code{lm}, \code{polr}, \code{glm} or \code{aalen}.}
 
 \item{treat}{a character string indicating the name of the treatment variable used in the models. The treatment can be either binary (integer or a two-valued factor) or continuous (numeric).}
 
@@ -36,13 +36,13 @@ multimediate(
 
 \item{conf.level}{level of the returned two-sided confidence intervals. Default is to return the 2.5 and 97.5 percentiles of the simulated quantities.}
 
-\item{fun}{the function used to compute the point estimate of the effects of interest from its empirical distribution. The function mean or median can be used. Default is the function mean.}
+\item{fun}{the function used to compute the point estimate of the effects of interest from its empirical distribution. The function \code{mean} or \code{median} can be used. Default is the function \code{mean}.}
 
 \item{data}{dataset with all variables used in the mediator and outcome models}
 
 \item{peryr}{the number of person-years to multiply the additive estimator to obtain results in scale of cases per person-years (only applicable to the survival outcome)}
 
-\item{verbose}{Logical. If `TRUE` (default), messages and a progress bar are displayed during execution.}
+\item{verbose}{Logical. If \code{TRUE} (default), messages and a progress bar are displayed during execution.}
 }
 \value{
 multimediate returns an object of class \code{mm}, a list that contains at least the components listed below.
@@ -86,22 +86,12 @@ med.analysis <- multimediate(
   treat = "Treatment",
   treat.value = 1,
   control.value = 0,
-  J = 250,
+  J = 100,
   conf.level = 0.95,
   verbose = FALSE
 )
 
 summary(med.analysis, opt = "avg")
 
-}
-\references{
-Jérolon, A., Baglietto, L., Birmelé, E., Alarcon, F., & Perduca, V. (2021).
-Causal mediation analysis in presence of multiple mediators uncausally related.
-\emph{The International Journal of Biostatistics}, 17(2), 191–221.
-doi:10.1515/ijb-2019-0088
 
-Domingo-Relloso A, Jerolon A, Tellez-Plaza M, Bermudez JD.
-Causal mediation for uncausally related mediators in the context of survival analysis.
-medRxiv [Preprint]. 2024 Feb 18:2024.02.16.24302923.
-doi: 10.1101/2024.02.16.24302923
 }
